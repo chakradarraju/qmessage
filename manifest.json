@@ -4,11 +4,12 @@
   "manifest_version": 2,
   "content_scripts": [
     {
-      "matches": ["http://www.quora.com/messages/*"],
-      "js": ["contentscript.js"]
+      "matches": ["http://www.quora.com/messages/thread/*"],
+      "js": ["contentscript.js"],
+      "css": ["smiley.css"]
     }
   ],
   "permissions": [
-    "tabs", "http://www.quora.com/messages/*"
+    "tabs", "http://www.quora.com/messages/thread/*"
   ]
 }
