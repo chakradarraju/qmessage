@@ -17,6 +17,7 @@ function eventHandler(e) {
     document.querySelector(selector.submit).click();
     e.preventDefault();
     attachEventHandler();
+    setTimeout(replaceAllEmoticonsInPage, 1000);
   }
 };
 
