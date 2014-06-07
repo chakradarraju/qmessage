@@ -1,0 +1,14 @@
+{
+  "name": "Quora messaging enhancer",
+  "version": "0.1",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["http://www.quora.com/messages/*"],
+      "js": ["contentscript.js"]
+    }
+  ],
+  "permissions": [
+    "tabs", "http://www.quora.com/messages/*"
+  ]
+}
