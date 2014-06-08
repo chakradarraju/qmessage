@@ -2,6 +2,7 @@
   background: url(https://googledrive.com/host/0B7LN3K-7DTu4MlhncmJZalQ5MTg/emoticons.jpg);
   height: 50px;
   width: 50px;
+  display: inline-block;
 }
 
 .smiley-happy {
