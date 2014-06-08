@@ -16,21 +16,24 @@ function eventHandler(e) {
   if (e.ctrlKey == false && e.charCode == 13) {
     document.querySelector(selector.submit).click();
     e.preventDefault();
-    attachEventHandler();
-    setTimeout(replaceAllEmoticonsInPage, 1000);
   }
 };
 
 function replaceAllEmoticonsInPage() {
-  var messages = document.querySelectorAll(selector.messages);
-  for (var i = 0; i < messages.length; i++) {
+  var messages = document.querySelectorAll(selector.messages),
+      processed = 0;
+  for (var i = 0; i < messages.length; i++) if (!messages[i].getAttribute('processed')) {
+    processed++;
     replaceEmoticonsInMessage(messages[i]);
+    messages[i].setAttribute('processed', true);
   }
 }
 
+var textNodeType = 3;
+
 function replaceEmoticonsInMessage(message) {
   var newContent, newContentLength;
-  for (var i = 0; i < message.childNodes.length; i++) if (message.childNodes[i].nodeType == 3) {
+  for (var i = 0; i < message.childNodes.length; i++) if (message.childNodes[i].nodeType == textNodeType) {
     newContent = replaceEmoticonsInText(message.childNodes[i]);
     newContentLength = newContent.length;
     for (var j = 0; j < newContentLength; j++) {
@@ -67,4 +70,4 @@ function createNodes(content) {
 }
 
 attachEventHandler();
-replaceAllEmoticonsInPage();
+setInterval(replaceAllEmoticonsInPage, 1000);
